@@ -9,5 +9,6 @@ export interface Note {
 }
 
 export type NoteState = {
-  list: Note[]
+  list: Note[],
+  isArchive: boolean,
 };

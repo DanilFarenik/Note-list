@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import noteReducer from "./noteSlice";
+import modalReducer from "./modalSlice";
 
 const store = configureStore({
   reducer: {
-    notes: noteReducer
+    notes: noteReducer,
+    modal: modalReducer
   }
 })
 

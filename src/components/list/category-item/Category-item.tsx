@@ -1,4 +1,5 @@
 import { Category } from "../../../type";
+import icons from "../icons";
 
 const CategoryHeaderItem: React.FC = () => {
   return (
@@ -15,7 +16,7 @@ const CategoryItem: React.FC<Category> = ({ name, active, archive }) => {
     <>
       <div className="list__name">
         <div className="list__icon">
-          {/* {icons[nameCategory]} */}
+          {icons[name as keyof typeof icons]}
         </div>
         <p>{name}</p>
       </div>

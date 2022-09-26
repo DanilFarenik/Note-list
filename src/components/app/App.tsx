@@ -7,6 +7,9 @@ import { useAppSelector } from "../../hook";
 
 import Header from "../header";
 import List from "../list";
+import BTNCreate from "../bnt-create/BTN-create";
+import Modal from "../modal";
+
 
 const getCategory = (notes: Note[]): Category[] => {
   const category = notes.reduce<AccumulateCategory>((accumulate, note) => {
@@ -23,16 +26,23 @@ const getCategory = (notes: Note[]): Category[] => {
 }
 
 const App: React.FC = () => {
-  const notes = useAppSelector(state => state.notes.list);
+  const { list: notes, isArchive } = useAppSelector(state => state.notes);
+  const modal = useAppSelector(state => state.modal);
 
-  const category = getCategory(notes)
+  const category = getCategory(notes);
 
   return (
     <>
+      {modal.isOpen ? <Modal /> : ""}
       <Header />
       <main>
-        <List numberOfColumns={6} data={notes} type={TypeLevel.NOTE} />
-        <List numberOfColumns={3} data={category} type={TypeLevel.CATEGORY} />
+        <section>
+          <List numberOfColumns={6} data={notes.filter(note => note.archived === isArchive)} type={TypeLevel.NOTE} />
+          <BTNCreate />
+        </section>
+        <section>
+          <List numberOfColumns={3} data={category} type={TypeLevel.CATEGORY} />
+        </section>
       </main>
     </>
   );
