@@ -1,0 +1,99 @@
+@import "../../style/index.scss";
+
+
+.list{
+  padding: 30px;
+
+  &__table{
+    display: flex;
+    flex-direction: column;
+    
+    width: 100%;
+    min-height: 300px;
+  }
+  
+  &__row{
+    display: grid;
+    align-items: center;
+    padding: 5px 20px;
+  
+    border-radius: 5px;
+    margin: 5px;
+  
+    background-color: #E8EAF5;
+  }
+  
+  
+  &__row-header{
+    font-weight: bold;
+  
+    background-color:  $header-grey-color;
+    color: #ffffff;
+  }
+  
+  &__name{
+    display: flex;
+    align-items: center;
+  }
+  
+  &__icon{
+    padding: 8px 0;
+    width: 38px;
+    height: 22px;
+    margin: 0 10px;
+  
+    font-size: 20px;
+    text-align: center;
+  
+    border-radius: 50%;
+  
+    background-color: $icon-color;
+    color: #ffffff;
+  }
+  
+  &__btn{
+    margin: 5px;
+  
+    font-size: 24px;
+  
+    border: none;
+    background-color: transparent;
+  
+    color: $icon-color;
+  
+    cursor: pointer;
+  }
+  
+  &__archive{
+    width: 110px;
+    padding: 3px 10px;
+    
+    font-weight: bold;
+    
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    
+    background-color:  $header-grey-color;
+    color: #ffffff;
+  
+    transition: .3s ease-in;
+    cursor: pointer;
+  }
+  
+  &__archive:hover{
+    color: $header-grey-color;
+    background:#ffffff;
+  }
+  
+  &__create{
+    float: right;
+    padding: 3px 10px;
+    
+    border-radius: 3px;
+    border: 1px solid;
+    margin: 20px 5px;
+  
+    cursor: pointer;
+  }
+}
+
