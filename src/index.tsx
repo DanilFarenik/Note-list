@@ -8,7 +8,7 @@ import store, { persistor } from './store';
 
 import App from './components/app';
 
-import './index.css';
+import './index.scss';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
