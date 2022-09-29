@@ -20,21 +20,21 @@ const noteSlice = createSlice({
     deleteNote(state, action: PayloadAction<number>) {
       const id: number | undefined = searchIndexNote(action.payload, state.list)
 
-      if (!id) return;
+      if (id === undefined) return;
 
       state.list = [...state.list.slice(0, id), ...state.list.slice(id + 1, state.list.length)];
     },
     editNote(state, action: PayloadAction<Note>) {
       const id: number | undefined = searchIndexNote(action.payload.id, state.list)
 
-      if (!id) return;
+      if (id === undefined) return;
 
       state.list = [...state.list.slice(0, id), action.payload, ...state.list.slice(id + 1, state.list.length)];
     },
     archiveNote(state, action: PayloadAction<number>) {
       const id: number | undefined = searchIndexNote(action.payload, state.list)
 
-      if (!id) return;
+      if (id === undefined) return;
 
       state.list = [...state.list.slice(0, id), { ...state.list[id], archived: !state.list[id].archived }, ...state.list.slice(id + 1, state.list.length)];
     },
