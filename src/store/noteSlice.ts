@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-import { FormValue, Note, NoteState } from "../type";
+import { Note, NoteState } from "../type";
 import { searchIndexNote } from "../util";
 
 

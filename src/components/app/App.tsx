@@ -1,5 +1,3 @@
-import "./App.scss";
-
 import { Note, TypeLevel, AccumulateCategory, Category } from "../../type";
 
 import { uuid } from "../../util";
@@ -36,9 +34,11 @@ const App: React.FC = () => {
       {modal.isOpen ? <Modal /> : ""}
       <Header />
       <main>
-        <section>
+        <section className="">
           <List numberOfColumns={6} data={notes.filter(note => note.archived === isArchive)} type={TypeLevel.NOTE} />
-          <BTNCreate />
+          <div className="text-right">
+            <BTNCreate />
+          </div>
         </section>
         <section>
           <List numberOfColumns={3} data={category} type={TypeLevel.CATEGORY} />

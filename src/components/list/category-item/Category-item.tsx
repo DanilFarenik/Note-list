@@ -14,8 +14,8 @@ const CategoryHeaderItem: React.FC = () => {
 const CategoryItem: React.FC<Category> = ({ name, active, archive }) => {
   return (
     <>
-      <div className="list__name">
-        <div className="list__icon">
+      <div className="flex items-center">
+        <div className="rounded-full w-[38px] text-center bg-icon p-2 mx-2 text-white">
           {icons[name as keyof typeof icons]}
         </div>
         <p>{name}</p>
