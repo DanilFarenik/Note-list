@@ -1,14 +1,13 @@
-import "./App.scss";
-
 import { Note, TypeLevel, AccumulateCategory, Category } from "../../type";
 
 import { uuid } from "../../util";
-import { useAppSelector } from "../../hook";
+import { useAppDispatch, useAppSelector } from "../../hook";
 
 import Header from "../header";
 import List from "../list";
-import BTNCreate from "../bnt-create/BTN-create";
+import Button from "../button/Button";
 import Modal from "../modal";
+import { add } from "../../store/modalSlice";
 
 
 const getCategory = (notes: Note[]): Category[] => {
@@ -28,7 +27,7 @@ const getCategory = (notes: Note[]): Category[] => {
 const App: React.FC = () => {
   const { list: notes, isArchive } = useAppSelector(state => state.notes);
   const modal = useAppSelector(state => state.modal);
-
+  const dispatch = useAppDispatch();
   const category = getCategory(notes);
 
   return (
@@ -38,7 +37,9 @@ const App: React.FC = () => {
       <main>
         <section>
           <List numberOfColumns={6} data={notes.filter(note => note.archived === isArchive)} type={TypeLevel.NOTE} />
-          <BTNCreate />
+          <div className="text-right">
+            <Button className="mx-10" type="outline" color="grey" onClick={() => dispatch(add())}>Create Note</Button>
+          </div>
         </section>
         <section>
           <List numberOfColumns={3} data={category} type={TypeLevel.CATEGORY} />

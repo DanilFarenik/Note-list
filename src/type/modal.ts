@@ -1,5 +1,3 @@
-import { NamesCategory } from "./category";
-
 export enum ModalLevel {
   EDIT = "EDIT",
   ADD = "ADD",
