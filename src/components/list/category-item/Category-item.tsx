@@ -1,5 +1,6 @@
 import { Category } from "../../../type";
-import icons from "../icons";
+import Icon, { nameType } from "../../icon";
+
 
 const CategoryHeaderItem: React.FC = () => {
   return (
@@ -15,9 +16,7 @@ const CategoryItem: React.FC<Category> = ({ name, active, archive }) => {
   return (
     <>
       <div className="flex items-center">
-        <div className="rounded-full w-[38px] text-center bg-icon p-2 mx-2 text-white">
-          {icons[name as keyof typeof icons]}
-        </div>
+        <Icon name={name as nameType} type="circle" color="grey" />
         <p>{name}</p>
       </div>
       <p>{active}</p>

@@ -4,7 +4,9 @@ import { edit } from "../../../store/modalSlice";
 import { archive, archiveNote, deleteNote } from "../../../store/noteSlice";
 
 import { Note } from "../../../type";
-import icons from "../icons";
+import Button from "../../button/Button";
+import Icon, { nameType } from "../../icon";
+
 
 const NoteHeaderItem: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -17,7 +19,7 @@ const NoteHeaderItem: React.FC = () => {
       <p>Content</p>
       <p>Dates</p>
       <div>
-        <button onClick={() => dispatch(archive())} className="rounded border-2 px-6 hover:bg-white hover:text-grey transition">{isArchive ? "Active" : "Archive"}</button>
+        <Button onClick={() => dispatch(archive())} className="px-6 border-2" type="outline" color="white">{isArchive ? "Active" : "Archive"}</Button>
       </div>
     </>
   )
@@ -29,9 +31,7 @@ const NoteItem: React.FC<Note> = ({ name, dateOfCreation, category, text, date, 
   return (
     <>
       <div className="flex items-center">
-        <div className="rounded-full w-[38px] text-center bg-icon p-2 mx-2 text-white">
-          {icons[category as keyof typeof icons]}
-        </div>
+        <Icon name={category as nameType} type="circle" color="grey" />
         <p>{name}</p>
       </div>
       <p>{dateOfCreation}</p>
@@ -41,13 +41,16 @@ const NoteItem: React.FC<Note> = ({ name, dateOfCreation, category, text, date, 
       <div>
         <button
           onClick={() => dispatch(edit({ name: name, category: category, text: text, id: id }))}
-          className="m-1 text-3xl text-icon"><i className="fa-solid fa-pen"></i></button>
+          className="mx-1"
+        ><Icon name="edit" color="grey" type="default" /></button>
         <button
           onClick={() => dispatch(archiveNote(id))}
-          className="m-1 text-3xl text-icon"><i className="fa-solid fa-box-archive"></i></button>
+          className="mx-1"
+        ><Icon name="archive" color="grey" type="default" /></button>
         <button
           onClick={() => dispatch(deleteNote(id))}
-          className="m-1 text-3xl text-icon"><i className="fa-solid fa-trash"></i></button>
+          className="mx-1"
+        ><Icon name="delete" color="grey" type="default" /></button>
       </div>
     </>
   )
