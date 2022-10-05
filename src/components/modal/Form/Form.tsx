@@ -42,22 +42,22 @@ const Form: React.FC = () => {
       modal.type === ModalLevel.ADD ? dispatch(addNote(note)) : dispatch(editNote(note))
 
       dispatch(close());
-    })} className="modal__form">
-      <div className="modal__item">
+    })} className="flex flex-col p-3 items-center">
+      <div className="flex justify-between w-full py-3">
         <label htmlFor="name">Name:</label>
-        <input {...register("name", { required: true, maxLength: 100 })} type="text" className={errors.name ? "modal__error" : ""} />
+        <input {...register("name", { required: true, maxLength: 100 })} type="text" className={`border-2 rounded px-1 ${errors.name ? "border-rose-500" : ""}`} />
       </div>
-      <div className="modal__item">
+      <div className="flex justify-between w-full py-3">
         <label htmlFor="category">Category:</label>
-        <select {...register("category")} >
+        <select className="border-2 rounded px-1" {...register("category")} >
           <option value={NamesCategory.task}>Task</option>
           <option value={NamesCategory.idea}>Idea</option>
           <option value={NamesCategory.quote}>Quote</option>
           <option value={NamesCategory.random}>Random Thought</option>
         </select>
       </div>
-      <textarea {...register("text", { required: true, maxLength: 200 })} className={`modal__text ${errors.text ? "modal__error" : ""}`}></textarea>
-      <input className="modal__btn" type="submit" value="save" />
+      <textarea {...register("text", { required: true, maxLength: 200 })} className={`border-2 rounded px-1 w-full h-[100px] resize-none ${errors.text ? "modal__error" : ""}`}></textarea>
+      <input className="border-2 rounded px-5 cursor-pointer m-3" type="submit" value="save" />
     </form>
   )
 }

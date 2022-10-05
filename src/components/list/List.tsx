@@ -1,5 +1,3 @@
-import "./List.scss";
-
 import { Note, Category, TypeLevel } from "../../type";
 
 import { NoteHeaderItem, NoteItem } from "./note-item";
@@ -35,14 +33,14 @@ const List: React.FC<List> = ({ numberOfColumns, data, type }) => {
   const style = { gridTemplateColumns: `repeat(${numberOfColumns}, 1fr)` }
 
   return (
-    <section className="list">
-      <div className="list__table">
-        <div className="list__row list__row-header" style={style}>
+    <section className="p-5 px-10">
+      <div className="flex-col w-full min-w-[300px]">
+        <div className={`grid my-3 rounded px-6 p-1 items-center font-bold bg-grey text-white`} style={style}>
           {headerElements[type]}
         </div>
         {data.map((item) => {
           return (
-            <div key={item.id} className="list__row" style={style}>
+            <div key={item.id} className={`grid my-3 rounded px-6 p-1 items-center bg-ItemList`} style={style}>
               {type === TypeLevel.NOTE ? itemElements[type](item as Note) : itemElements[type](item as Category)}
             </div>
           )
